@@ -1,3 +1,4 @@
+import main
 from data import Data
 import streamlit as st
 
@@ -33,6 +34,7 @@ def header():
         unsafe_allow_html = True
     )
 
+@st.cache_resource
 def tampilkan_data():
     _, row2, _ = st.columns([0.1, 8, 0.1])
     row2.markdown('<h4>📊 Data Digunakan</h4>', unsafe_allow_html = True)
@@ -48,18 +50,26 @@ def tampilkan_data():
         unsafe_allow_html = True
     )
     
+    ukuran_data = row2.selectbox(
+        label = 'Pilih Data', 
+        options = ['Data Kecil', 'Data Sedang', 'Data Besar']
+    )
+    
     from_data = Data()
     data_vrptw = from_data.ekstrak_data(
         path = 'https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx', 
-        sheet_name = 'Data Kecil'
+        sheet_name = ukuran_data
     )
-
+    
     row2.dataframe(
         data_vrptw, 
         width = 1200, 
         height = 300
     )
-    
+
+    return(data_vrptw)
+
+@st.cache_resource
 def intro_fpa():
     _, row3, _ = st.columns([0.1, 8, 0.1])
     row3.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
@@ -74,6 +84,7 @@ def intro_fpa():
         ''', unsafe_allow_html = True
     )
 
+@st.cache_resource
 def input_parameter_fpa():
     _, row4, _ = st.columns([0.1, 8, 0.1])
     row4.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
@@ -86,11 +97,7 @@ def input_parameter_fpa():
         ''', unsafe_allow_html = True
     )                 
     
-    _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
-    ukuran_data = row4A.selectbox(
-        label = 'Pilih Data', 
-        options = ['Data Kecil', 'Data Sedang', 'Data Besar']
-    )   
+    _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])   
     
     kapasitas_max = row4A.number_input(
         'Kapasitas Max Kendaraan', 
@@ -138,6 +145,8 @@ def input_parameter_fpa():
         options = ['Tidak', 'Ya']
     )
 
+    tipe_chaotic = x_awal = alpha = mu = None
+    
     if(is_chaotic == 'Ya'):
         tipe_chaotic = row4B.selectbox(
             label = 'Pilih Tipe Chaotic', 
@@ -170,11 +179,27 @@ def input_parameter_fpa():
         'Jalankan Program',
         use_container_width = True
     )
+
+    parameter_fpa_vrptw = dict(
+        kapasitas_max = kapasitas_max, 
+        banyak_bunga = banyak_bunga, 
+        step_size = step_size, 
+        switch_probability = switch_probability, 
+        lamda = lamda, 
+        max_iterasi = max_iterasi, 
+        tipe_chaotic = tipe_chaotic, 
+        x_awal = x_awal,
+        alpha = alpha,
+        mu = mu
+    )
     
-    return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi, run)
+    return(run, parameter_fpa_vrptw)
     
 if __name__ == '__main__':
     header()
-    tampilkan_data()
+    data_vrptw = tampilkan_data()
     intro_fpa()
-    input_parameter_fpa()
+    run, parameter_fpa_vrptw = input_parameter_fpa()
+    
+    if(run):
+        main.jalankan_program(data_vrptw, **parameter_fpa)
