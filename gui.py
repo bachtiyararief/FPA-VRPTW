@@ -164,16 +164,9 @@ def input_parameter_fpa():
                 format = '%.4f'
             ) 
     
-    row4B.markdown('''
-        <br>
-        <p align="center">
-        <img src="https://i.pinimg.com/originals/04/df/fe/04dffedbca431e0674ee8abf56b780e0.gif" width="420" height="315">
-        </p>
-        ''',
-        unsafe_allow_html = True
-    )
+    run = row4B.button('Jalankan Program')
     
-    return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi)
+    return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi, run)
     
 if __name__ == '__main__':
     header()
