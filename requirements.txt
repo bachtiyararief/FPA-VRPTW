@@ -1,1 +1,4 @@
-requirements.txt
+streamlit
+openpyxl
+pandas
+
