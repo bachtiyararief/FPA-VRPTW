@@ -33,7 +33,7 @@ def header():
         unsafe_allow_html = True
     )
 
-@st.cache_resource
+@st.cache_resource(experimental_allow_widgets=True)
 def tampilkan_data():
     _, row2, _ = st.columns([0.1, 8, 0.1])
     row2.markdown('<h4>📊 Data Digunakan</h4>', unsafe_allow_html = True)
