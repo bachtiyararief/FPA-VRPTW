@@ -98,6 +98,7 @@ def input_parameter_fpa():
         'Step Size (α)', 
         min_value = 0.0000, 
         max_value = 1.0000,
+        format = '%f'
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
@@ -121,6 +122,7 @@ def input_parameter_fpa():
     )
     
     row4B.markdown('''
+        <br><br><br>
         <p align="center">
         <img src="https://i.pinimg.com/originals/04/df/fe/04dffedbca431e0674ee8abf56b780e0.gif" width="593" height="444">
         </p>
