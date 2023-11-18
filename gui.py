@@ -7,7 +7,7 @@ st.set_page_config(
 
 from data import Data
 
-@st.cache_resource
+@st.cache_resource(experimental_allow_widgets=True)
 def header():
     _, row1, _ = st.columns([0.1, 8, 0.1])
     row1.markdown('<h1>Penyelesaian VRPTW dengan Algoritma Flower Pollination</h1>', unsafe_allow_html = True)
@@ -69,7 +69,7 @@ def tampilkan_data():
 
     return(data_vrptw)
 
-@st.cache_resource
+@st.cache_resource(experimental_allow_widgets=True)
 def intro_fpa():
     _, row3, _ = st.columns([0.1, 8, 0.1])
     row3.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
@@ -84,7 +84,7 @@ def intro_fpa():
         ''', unsafe_allow_html = True
     )
 
-@st.cache_resource
+@st.cache_resource(experimental_allow_widgets=True)
 def input_parameter_fpa():
     _, row4, _ = st.columns([0.1, 8, 0.1])
     row4.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
