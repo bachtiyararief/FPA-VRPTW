@@ -40,7 +40,8 @@ def tampilkan_data():
         <p align="justify">
         Data yang digunakan terdiri dari 25, 50, dan 100 pelanggan yang digunakan
         untuk perhitungan pada program. Data diperoleh dari 
-        <i>http://neo.lcc.uma.es/vrp/vrp-instances/capacitated-vrp-with-time-windows-instances/</i>. 
+        <a href="http://neo.lcc.uma.es/vrp/vrp-instances/capacitated-vrp-with-time-windows-instances/">
+        <i>http://neo.lcc.uma.es/vrp/vrp-instances/capacitated-vrp-with-time-windows-instances/</i></a>. 
         Data yang diolah terdiri dari koordinat posisi customer, permintaan tiap customer termasuk
         juga Time Windows dan Waktu Pelayanan.</p>
         ''',    
@@ -95,21 +96,21 @@ def input_parameter_fpa():
 
     step_size = row4A.number_input(
         'Step Size (α)', 
-        min_value = 0.0, 
-        max_value = 1.0,
+        min_value = 0.0000, 
+        max_value = 1.0000,
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
     switch_probability = row4A.number_input(
         'Switch Probability (ρ)', 
-        min_value = 0.0, 
-        max_value = 1.0,
+        min_value = 0.0000, 
+        max_value = 1.0000,
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
     lamda = row4A.number_input(
         'Lambda (λ)', 
-        min_value = 0.0, 
+        min_value = 0.0000, 
         placeholder = "Masukan bilangan real > 0"
     )
 
@@ -117,6 +118,14 @@ def input_parameter_fpa():
         'Iterasi Maksimum', 
         min_value = 1,
         placeholder = "Masukan bilangan bulat > 0"
+    )
+    
+    row4B.markdown('''
+        <p align="center">
+        <img src="https://i.pinimg.com/originals/04/df/fe/04dffedbca431e0674ee8abf56b780e0.gif" width="593" height="444">
+        </p>
+        ''',
+        unsafe_allow_html = True
     )
     
     return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi)
