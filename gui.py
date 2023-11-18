@@ -1,11 +1,13 @@
 import streamlit as st
+from data import Data
+
 st.set_page_config(
     page_title = 'FPA-VRPTW Ismi',
     page_icon = '-',
     layout = 'wide'
 )
 
-from data import Data
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
 @st.cache_resource(experimental_allow_widgets=True)
 def header():
