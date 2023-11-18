@@ -37,7 +37,7 @@ def tampilkan_data(data = None):
     _, row2, _ = st.columns([0.1, 8, 0.1])
     row2.markdown('<h4>📊 Data Digunakan</h4>', unsafe_allow_html = True)
     row2.markdown('''
-        <p align="center">
+        <p align="justify">
         Data yang digunakan terdiri dari 25, 50, dan 100 pelanggan yang digunakan
         untuk perhitungan pada program. Data diperoleh dari 
         <i>http://neo.lcc.uma.es/vrp/vrp-instances/capacitated-vrp-with-time-windows-instances/</i>. 
