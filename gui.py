@@ -53,7 +53,7 @@ def tampilkan_data(data = None):
         sheet_name = 'Data Kecil'
     )
 
-    row2.dataframe(data_vrptw)
+    row2.dataframe(data_vrptw, width=800, height=400)
 
 if __name__ == '__main__':
     header()
