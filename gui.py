@@ -23,8 +23,8 @@ def header():
     
     row1.markdown('''
         <p align="center">
-        <img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-13-0761-4_52/MediaObjects/461655_1_En_52_Fig1_HTML.gif" width="600" height="300">
-        <p align="center"><b>Gambar 1. Proses Ekstraksi Data dengan <i>pandas</i></b></p>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*yYIxxq81QOgq5DuqEnrGcg.gif" width="811" height="436">
+        <p align="center"><b>Simulasi <i>Vehicle Routing Problem</i></b></p>
         ''',
         unsafe_allow_html = True
     )
