@@ -1,4 +1,3 @@
-#from main import *
 from data import Data
 import streamlit as st
 
