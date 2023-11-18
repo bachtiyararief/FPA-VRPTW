@@ -12,10 +12,9 @@ class Data():
         self, path: str, sheet_name: str
     ) -> pandas.DataFrame: 
         
-        url = "https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx"
-        data = rq.get(url).content
-        data = pandas.read_excel(io.BytesIO(data), sheet_name = sheet_name)
-        data.set_index('Customer Number', inplace=True)
+        data_io = requests.get(path).content
+        data = pandas.read_excel(io.BytesIO(data_io), sheet_name = sheet_name, engine = 'openpyxl')
+        data.set_index('Customer Number', inplace = True)
         
         return(data)
     
