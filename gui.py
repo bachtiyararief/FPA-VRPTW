@@ -55,6 +55,11 @@ def tampilkan_data(data = None):
 
     row2.dataframe(data_vrptw, width=1200, height=300)
 
+    row2.markdown(
+        f'<div style="text-align:center">{data_vrptw.to_html(index=False)}</div>',
+        unsafe_allow_html=True
+    )
+
 if __name__ == '__main__':
     header()
     tampilkan_data()
