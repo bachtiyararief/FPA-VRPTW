@@ -75,8 +75,10 @@ def intro_fpa():
     )
 
 def input_parameter_fpa():
+    _, row4, _ = st.columns([0.1, 8, 0.1])
+    row4.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
+    
     _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
-    row4A.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
     
     ukuran_data = row4A.selectbox(
         label = 'Pilih Data', 
@@ -97,7 +99,7 @@ def input_parameter_fpa():
     )
 
     step_size = row4A.number_input(
-        'Step Size (α)', 
+        'Step Size', 
         min_value = 0.0000, 
         max_value = 1.0000,
         format = '%.4f',
@@ -124,7 +126,36 @@ def input_parameter_fpa():
         format = '%d',
     )
 
-    is_chaotic = row4B.toggle('Gunakan Chaotic Maps?')
+    is_chaotic = row4B.selectbox(
+        label = 'Gunakan Chaotic Maps?', 
+        options = ['Tidak', 'Ya']
+    )
+
+    if(is_chaotic == 'Ya'):
+        tipe_chaotic = row4B.selectbox(
+            label = 'Pilih Tipe Chaotic', 
+            options = ['Logistic', 'Iterative', 'Sine', 'Tent', 'Singer']
+        )
+        
+        x_awal = row4B.number_input(
+            'x0', 
+            min_value = 0.0000, 
+            format = '%.4f'
+        )
+        
+        if(tipe_chaotic in ['Logistic', 'Iterative', 'Sine']):
+            alpha = row4B.number_input(
+                'alpha (α)', 
+                min_value = 0.0000, 
+                format = '%.4f'
+            ) 
+            
+        elif(tipe_chaotic == 'Singer'):
+            mu = row4B.number_input(
+                'mu (μ)', 
+                min_value = 0.0000, 
+                format = '%.4f'
+            ) 
     
     row4B.markdown('''
         <br><br><br>
