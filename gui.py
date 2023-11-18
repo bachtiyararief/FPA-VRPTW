@@ -98,7 +98,7 @@ def input_parameter_fpa():
         'Step Size (α)', 
         min_value = 0.0000, 
         max_value = 1.0000,
-        format = '%f'
+        format = '%f',
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
