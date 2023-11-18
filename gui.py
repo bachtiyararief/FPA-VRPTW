@@ -23,7 +23,7 @@ def header():
     
     row1.markdown('''
         <p align="center">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*yYIxxq81QOgq5DuqEnrGcg.gif" width="811" height="436">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*yYIxxq81QOgq5DuqEnrGcg.gif" width="558" height="300">
         <p align="center"><b>Simulasi <i>Vehicle Routing Problem</i></b></p>
         ''',
         unsafe_allow_html = True
