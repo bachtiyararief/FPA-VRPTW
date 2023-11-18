@@ -1,11 +1,11 @@
-from data import Data
 import streamlit as st
-
 st.set_page_config(
     page_title = 'FPA-VRPTW Ismi',
     page_icon = '-',
     layout = 'wide'
 )
+
+from data import Data
 
 @st.cache_resource
 def header():
