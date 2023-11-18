@@ -22,7 +22,7 @@ def header():
     )
 
 def tampilkan_data(data = None):
-     _, row2, _ = st.columns([0.1, 8, 0.1])
+    _, row2, _ = st.columns([0.1, 8, 0.1])
     row2.markdown('<h4>📊 Data Digunakan</h4>', unsafe_allow_html = True)
     row2.markdown('''
         Data yang digunakan terdiri dari 25, 50, dan 100 pelanggan yang digunakan
