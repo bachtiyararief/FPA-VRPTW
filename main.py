@@ -6,7 +6,7 @@ warnings.filterwarnings('ignore')
 from_data = data.Data()
 
 data_vrptw = from_data.ekstrak_data(
-    path = 'D:/Belajar/VRPTW/Data VRP-TW.xlsx', 
+    path = 'https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx', 
     sheet_name = 'Data Kecil'
 )
 
