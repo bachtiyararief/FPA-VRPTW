@@ -95,25 +95,21 @@ def input_parameter_fpa():
 
     step_size = row4A.number_input(
         'Step Size (α)', 
-        min_value = 0, 
-        max_value = 1,
-        step = 0.00001,
+        min_value = 0.0, 
+        max_value = 1.0,
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
     switch_probability = row4A.number_input(
         'Switch Probability (ρ)', 
-        min_value = 0, 
-        max_value = 1,
-        step = 0.00001,
+        min_value = 0.0, 
+        max_value = 1.0,
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
     lamda = row4A.number_input(
         'Lambda (λ)', 
-        min_value = 0, 
-        max_value = 1,
-        step = 0.00001,
+        min_value = 0.0, 
         placeholder = "Masukan bilangan real > 0"
     )
 
