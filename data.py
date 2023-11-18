@@ -1,5 +1,7 @@
 import math
 import pandas
+import requests
+import io
 
 class Data():
     
@@ -10,7 +12,9 @@ class Data():
         self, path: str, sheet_name: str
     ) -> pandas.DataFrame: 
         
-        data = pandas.read_excel(path, sheet_name = sheet_name)
+        url = "https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx"
+        data = rq.get(url).content
+        data = pandas.read_excel(io.BytesIO(data), sheet_name = sheet_name)
         data.set_index('Customer Number', inplace=True)
         
         return(data)
