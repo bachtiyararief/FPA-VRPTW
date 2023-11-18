@@ -75,7 +75,7 @@ def intro_fpa():
 
 def input_parameter_fpa():
     _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
-    row3A.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
+    row4A.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
     
     ukuran_data = row4A.selectbox(
         label = 'Pilih Data', 
