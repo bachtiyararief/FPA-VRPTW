@@ -86,19 +86,21 @@ def input_parameter_fpa():
     kapasitas_max = row4A.number_input(
         'Kapasitas Max Kendaraan', 
         min_value = 1,
+        format = '%d',
     )
 
     banyak_bunga = row4A.number_input(
         'Banyak Bunga', 
         min_value = 1, 
-        max_value = 1000
+        max_value = 1000,
+        format = '%d',
     )
 
     step_size = row4A.number_input(
         'Step Size (α)', 
         min_value = 0.0000, 
         max_value = 1.0000,
-        format = '%f',
+        format = '%.4f',
         placeholder = "Masukan bilangan real 0 s.d 1"
     )
 
@@ -106,20 +108,23 @@ def input_parameter_fpa():
         'Switch Probability (ρ)', 
         min_value = 0.0000, 
         max_value = 1.0000,
-        placeholder = "Masukan bilangan real 0 s.d 1"
+        format = '%.4f'
     )
 
     lamda = row4A.number_input(
         'Lambda (λ)', 
         min_value = 0.0000, 
-        placeholder = "Masukan bilangan real > 0"
+        format = '%.4f'
     )
 
     max_iterasi = row4A.number_input(
         'Iterasi Maksimum', 
         min_value = 1,
-        placeholder = "Masukan bilangan bulat > 0"
+        placeholder = "Masukan bilangan bulat > 0",
+        format = '%d',
     )
+
+    is_chaotic = row4b.toggle('Gunakan Chaotic Maps?')
     
     row4B.markdown('''
         <br><br><br>
