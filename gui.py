@@ -59,10 +59,54 @@ def tampilkan_data():
         height = 300
     )
 
+def input_parameter_fpa():
+    _, row3A, _, row3B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
+    
+    ukuran_data = row3A.selectbox(
+        label = 'Pilih Data', 
+        options = ['Data Kecil', 'Data Sedang', 'Data Besar']
+    )   
+    
+    kapasitas_max = row3A.number_input(
+        'Kapasitas Max Kendaraan', 
+        min_value = 1,
+    )
+
+    banyak_bunga = row3A.number_input(
+        'Banyak Bunga', 
+        min_value = 1, 
+        max_value = 1000
+    )
+
+    step_size = row3A.number_input(
+        'Step Size (α)', 
+        min_value = 0, 
+        max_value = 1
+    )
+
+    switch_probability = row3A.number_input(
+        'Switch Probability (ρ)', 
+        min_value = 0, 
+        max_value = 1
+    )
+
+    lamda = row3A.number_input(
+        'Lambda (λ)', 
+        min_value = 0, 
+        max_value = 1
+    )
+
+    max_iterasi = row3A.number_input(
+        'Iterasi Maksimum', 
+        min_value = 1
+    )
+    
+    return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi)
+    
 def intro_fpa():
-    _, row3, _ = st.columns([0.1, 8, 0.1])
-    row3.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
-    row3.markdown('''
+    _, row4, _ = st.columns([0.1, 8, 0.1])
+    row4.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
+    row4.markdown('''
         <p align="justify">
         Dalam penyelesaian masalah Vehicle Routing Problem with Time Window (VRPTW)
         terdapat beberapa algoritma yang pernah digunakan. Saat ini muncul beberapa 
@@ -72,6 +116,8 @@ def intro_fpa():
         Dimana proses penyerbukan terdiri atas dua jenis yaitu penyerbukan sendiri (lokal) dan penyerbukan silang (global)
         ''', unsafe_allow_html = True
     )
+
+    input_parameter_fpa()
     
 if __name__ == '__main__':
     header()
