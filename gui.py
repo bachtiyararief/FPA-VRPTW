@@ -1,4 +1,4 @@
-from main import *
+#from main import *
 from data import Data
 import streamlit as st
 
@@ -202,4 +202,5 @@ if __name__ == '__main__':
     run, parameter_fpa_vrptw = input_parameter_fpa()
     
     if(run):
-        jalankan_program(data_vrptw, **parameter_fpa)
+        pass
+        #jalankan_program(data_vrptw, **parameter_fpa)
