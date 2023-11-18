@@ -129,3 +129,4 @@ if __name__ == '__main__':
     header()
     tampilkan_data()
     intro_fpa()
+    input_parameter_fpa()
