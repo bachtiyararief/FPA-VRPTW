@@ -167,7 +167,7 @@ def input_parameter_fpa():
     row4B.markdown('''
         <br>
         <p align="center">
-        <img src="https://i.pinimg.com/originals/04/df/fe/04dffedbca431e0674ee8abf56b780e0.gif" width="444" height="350">
+        <img src="https://i.pinimg.com/originals/04/df/fe/04dffedbca431e0674ee8abf56b780e0.gif" width="420" height="315">
         </p>
         ''',
         unsafe_allow_html = True
