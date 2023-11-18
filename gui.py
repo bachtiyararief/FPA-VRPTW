@@ -59,6 +59,21 @@ def tampilkan_data(data = None):
         height = 300
     )
 
+def intro_fpa():
+    _, row3, _ = st.columns([0.1, 8, 0.1])
+    row3.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
+    row3.markdown('''
+        <p align="justify">
+        Dalam penyelesaian masalah Vehicle Routing Problem with Time Window (VRPTW)
+        terdapat beberapa algoritma yang pernah digunakan. Saat ini muncul beberapa 
+        algoritma baru salah satunya adalah Flower Polination Algorithm (FPA). 
+        Flower Polination Algorithm (FPA) pertama kali ditemukan oleh Xin She Yang pada tahun 2012.
+        Flower Polination Algorithm (FPA) mengadopsi proses dari penyerbukan bunga. 
+        Dimana proses penyerbukan terdiri atas dua jenis yaitu penyerbukan sendiri (lokal) dan penyerbukan silang (global)
+        ''', unsafe_allow_html = True
+    )
+    
 if __name__ == '__main__':
     header()
     tampilkan_data()
+    intro_fpa()
