@@ -76,4 +76,4 @@ def jalankan_program(data_vrptw, **parameter_fpa):
         posisi = posisi_akhir
         iterasi += 1
         
-return(permutasi_tiap_iterasi, total_jarak_tiap_iterasi)
+    return(permutasi_tiap_iterasi, total_jarak_tiap_iterasi)
