@@ -22,7 +22,9 @@ def header():
     )
     
     row1.markdown('''
-        <img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-13-0761-4_52/MediaObjects/461655_1_En_52_Fig1_HTML.gif"
+        <p align="center">
+        <img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-13-0761-4_52/MediaObjects/461655_1_En_52_Fig1_HTML.gif" width="600" height="300">
+        <p align="center"><b>Gambar 1. Proses Ekstraksi Data dengan <i>pandas</i></b></p>
         ''',
         unsafe_allow_html = True
     )
