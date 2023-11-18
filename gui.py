@@ -77,9 +77,16 @@ def intro_fpa():
 def input_parameter_fpa():
     _, row4, _ = st.columns([0.1, 8, 0.1])
     row4.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
+    row4.markdown('''
+        <p align="justify">
+        Ketika mengimplementasikan Algoritma <i>Flower Pollination</i>, perlu menentukan terlebih dahulu
+        beberapa parameter untuk mengontrol perilaku algoritma tersebut. Masukan beberapa
+        parameter utama yang digunakan dalam FPA dengan benar.
+        </p>
+        ''', unsafe_allow_html = True
+    )                 
     
     _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
-    
     ukuran_data = row4A.selectbox(
         label = 'Pilih Data', 
         options = ['Data Kecil', 'Data Sedang', 'Data Besar']
