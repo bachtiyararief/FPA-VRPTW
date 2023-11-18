@@ -163,8 +163,13 @@ def input_parameter_fpa():
                 min_value = 0.0000, 
                 format = '%.4f'
             ) 
-    
-    run = row4B.button('Jalankan Program')
+            
+    row4B.markdown('<br>', unsafe_allow_html = True)
+                   
+    run = row4B.button(
+        'Jalankan Program',
+        use_container_width = True
+    )
     
     return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi, run)
     
