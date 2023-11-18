@@ -58,55 +58,11 @@ def tampilkan_data():
         width = 1200, 
         height = 300
     )
-
-def input_parameter_fpa():
-    _, row3A, _, row3B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
-    
-    ukuran_data = row3A.selectbox(
-        label = 'Pilih Data', 
-        options = ['Data Kecil', 'Data Sedang', 'Data Besar']
-    )   
-    
-    kapasitas_max = row3A.number_input(
-        'Kapasitas Max Kendaraan', 
-        min_value = 1,
-    )
-
-    banyak_bunga = row3A.number_input(
-        'Banyak Bunga', 
-        min_value = 1, 
-        max_value = 1000
-    )
-
-    step_size = row3A.number_input(
-        'Step Size (α)', 
-        min_value = 0, 
-        max_value = 1
-    )
-
-    switch_probability = row3A.number_input(
-        'Switch Probability (ρ)', 
-        min_value = 0, 
-        max_value = 1
-    )
-
-    lamda = row3A.number_input(
-        'Lambda (λ)', 
-        min_value = 0, 
-        max_value = 1
-    )
-
-    max_iterasi = row3A.number_input(
-        'Iterasi Maksimum', 
-        min_value = 1
-    )
-    
-    return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi)
     
 def intro_fpa():
-    _, row4, _ = st.columns([0.1, 8, 0.1])
-    row4.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
-    row4.markdown('''
+    _, row3, _ = st.columns([0.1, 8, 0.1])
+    row3.markdown('<h4>🌼 Flower Polination Algorithm (FPA)</h4>', unsafe_allow_html = True)
+    row3.markdown('''
         <p align="justify">
         Dalam penyelesaian masalah Vehicle Routing Problem with Time Window (VRPTW)
         terdapat beberapa algoritma yang pernah digunakan. Saat ini muncul beberapa 
@@ -117,7 +73,57 @@ def intro_fpa():
         ''', unsafe_allow_html = True
     )
 
-    input_parameter_fpa()
+def input_parameter_fpa():
+    _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])
+    row3A.markdown('<h4>🚀 Input Parameter</h4>', unsafe_allow_html = True)
+    
+    ukuran_data = row4A.selectbox(
+        label = 'Pilih Data', 
+        options = ['Data Kecil', 'Data Sedang', 'Data Besar']
+    )   
+    
+    kapasitas_max = row4A.number_input(
+        'Kapasitas Max Kendaraan', 
+        min_value = 1,
+    )
+
+    banyak_bunga = row4A.number_input(
+        'Banyak Bunga', 
+        min_value = 1, 
+        max_value = 1000
+    )
+
+    step_size = row4A.number_input(
+        'Step Size (α)', 
+        min_value = 0, 
+        max_value = 1,
+        step = 0.00001,
+        placeholder = "Masukan bilangan real 0 s.d 1"
+    )
+
+    switch_probability = row4A.number_input(
+        'Switch Probability (ρ)', 
+        min_value = 0, 
+        max_value = 1,
+        step = 0.00001,
+        placeholder = "Masukan bilangan real 0 s.d 1"
+    )
+
+    lamda = row4A.number_input(
+        'Lambda (λ)', 
+        min_value = 0, 
+        max_value = 1,
+        step = 0.00001,
+        placeholder = "Masukan bilangan real > 0"
+    )
+
+    max_iterasi = row4A.number_input(
+        'Iterasi Maksimum', 
+        min_value = 1,
+        placeholder = "Masukan bilangan bulat > 0"
+    )
+    
+    return(ukuran_data, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi)
     
 if __name__ == '__main__':
     header()
