@@ -1,76 +1,79 @@
-import data, vrp, fpa
+import vrp, fpa
 
-import warnings
-warnings.filterwarnings('ignore')
+def jalankan_program(data_vrptw, **parameter_fpa):
 
-from_data = data.Data()
+    dimensi = data_vrptw.shape[0] - 1
+    maks_kapasitas_kendaraan = parameter_fpa.get('maks_kapasitas_kendaraan')
+    banyak_bunga = parameter_fpa.get('banyak_bunga')
+    step_size = parameter_fpa.get('step_size')
+    switch_probability = parameter_fpa.get('switch_probability')
+    lamda = parameter_fpa.get('lamda')
+    maks_iterasi = parameter_fpa.get('maks_iterasi')
+    tipe_chaotic = parameter_fpa.get('tipe_chaotic')
 
-data_vrptw = from_data.ekstrak_data(
-    path = 'https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx', 
-    sheet_name = 'Data Kecil'
-)
-
-banyak_pelanggan = data_vrptw.shape[0] - 1
-
-FPA = fpa.FlowerPollination(
-    banyak_bunga = 5,
-    step_size = 0.1,
-    switch_probability = 0.5,
-    lamda = 0.1,
-    dimensi = banyak_pelanggan,
-    chaotic = {
-        'type' : 'logistic',
-        'params' : {
-            'alpha' : 4,
-            'x_awal' : 0.3
+    if(tipe_chaotic is not None):
+        x_awal = parameter_fpa.get('x_awal')
+        alpha = parameter_fpa.get('alpha')
+        mu = parameter_fpa.get('mu')
+    
+    FPA = fpa.FlowerPollination(
+        banyak_bunga = banyak_bunga,
+        step_size = step_size,
+        switch_probability = switch_probability,
+        lamda = lamda,
+        dimensi = dimensi,
+        chaotic = {
+            'type' : tipe_chaotic,
+            'params' : {
+                'x_awal' : x_awal,
+                'alpha' : alpha,
+                'mu' : mu
+            }
         }
-    }
-)
+    )
 
-VRPTW = vrp.VehicleRoutingProblemwithTimeWindows(
-    data = data_vrptw,
-    maks_kapasitas_kendaraan = 500
-)
-
-posisi = FPA.bangkitkan_posisi_bunga()
-
-iterasi = 1
-max_iterasi = 2
-
-while(iterasi <= max_iterasi):
+    VRPTW = vrp.VehicleRoutingProblemwithTimeWindows(
+        data = data_vrptw,
+        maks_kapasitas_kendaraan = maks_kapasitas_kendaraan
+    )
     
-    print(f'\n========== ITERASI {iterasi} ==========')
-    print(f'\n{posisi}')
+    iterasi = 1
+    maks_iterasi = maks_iterasi
+
+    permutasi_tiap_iterasi = list()
+    total_jarak_tiap_iterasi = list()
     
-    permutasi = VRPTW.urutkan_posisi(posisi)
-    print(f'\n{permutasi}\n')
-
-    total_jarak = VRPTW.fungsi_tujuan(permutasi = permutasi, show = True)
-    print(f'\n{total_jarak}')
-
-    nilai_optimum, index_bunga_terbaik = FPA.solusi_terbaik(fitness = total_jarak['Fungsi Tujuan'])
-    print(f'\nBunga terbaik : {index_bunga_terbaik}')
-
-    posisi_baru = FPA.penyerbukan(posisi, index_bunga_terbaik, show = True)
-    print(posisi_baru)
-
-    permutasi_baru = VRPTW.urutkan_posisi(posisi_baru)
-    print(f'\n{permutasi_baru}\n')
-
-    total_jarak_baru = VRPTW.fungsi_tujuan(permutasi = permutasi_baru, show = True)
-    print(f'\n{total_jarak_baru}')
-
-    banding = FPA.bandingkan_hasil(total_jarak['Fungsi Tujuan'], total_jarak_baru['Fungsi Tujuan'])
-    print(f'\n{banding}')
-
-    posisi_akhir = FPA.update_posisi(hasil_banding = banding, posisi_awal = posisi, posisi_baru = posisi_baru)
-    print(f'\n{posisi_akhir}')
-
-    nilai_optimum_akhir, index_bunga_terbaik_akhir = FPA.solusi_terbaik(fitness = banding['Fungsi Tujuan Terbaik'])
-    print(f'\nBunga terbaik : {index_bunga_terbaik_akhir}')
+    posisi = FPA.bangkitkan_posisi_bunga()
     
-    permutasi_bunga_terbaik = VRPTW.urutkan_posisi(posisi_akhir.loc[[index_bunga_terbaik_akhir]])
-    VRPTW.perhitungan_fungsi_tujuan(solusi = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir], show = True)
-    
-    posisi = posisi_akhir
-    iterasi += 1
+    while(iterasi <= maks_iterasi):
+
+        permutasi = VRPTW.urutkan_posisi(posisi)
+        total_jarak = VRPTW.fungsi_tujuan(permutasi = permutasi, show = True)
+        nilai_optimum, index_bunga_terbaik = FPA.solusi_terbaik(fitness = total_jarak['Fungsi Tujuan'])
+        posisi_baru = FPA.penyerbukan(posisi, index_bunga_terbaik, show = True)
+        permutasi_baru = VRPTW.urutkan_posisi(posisi_baru)
+        total_jarak_baru = VRPTW.fungsi_tujuan(permutasi = permutasi_baru, show = True)
+        banding = FPA.bandingkan_hasil(total_jarak['Fungsi Tujuan'], total_jarak_baru['Fungsi Tujuan'])
+        posisi_akhir = FPA.update_posisi(hasil_banding = banding, posisi_awal = posisi, posisi_baru = posisi_baru)
+        nilai_optimum_akhir, index_bunga_terbaik_akhir = FPA.solusi_terbaik(fitness = banding['Fungsi Tujuan Terbaik'])
+        permutasi_bunga_terbaik = VRPTW.urutkan_posisi(posisi_akhir.loc[[index_bunga_terbaik_akhir]])
+
+        permutasi_tiap_iterasi.append(permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir])
+        total_jarak_tiap_iterasi.append(nilai_optimum_akhir)
+        
+        print(f'\n========== ITERASI {iterasi} ==========')
+        print(f'\n{posisi}')
+        print(f'\n{permutasi}\n')
+        print(f'\n{total_jarak}')
+        print(f'\nBunga terbaik : {index_bunga_terbaik}')
+        print(posisi_baru)
+        print(f'\n{permutasi_baru}\n')
+        print(f'\n{total_jarak_baru}')
+        print(f'\n{banding}')
+        print(f'\n{posisi_akhir}')
+        print(f'\nBunga terbaik : {index_bunga_terbaik_akhir}')
+        VRPTW.perhitungan_fungsi_tujuan(solusi = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir], show = True)
+        posisi = posisi_akhir
+        iterasi += 1
+        
+return(permutasi_tiap_iterasi, total_jarak_tiap_iterasi)
