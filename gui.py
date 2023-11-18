@@ -49,9 +49,10 @@ def tampilkan_data():
         unsafe_allow_html = True
     )
     
-    ukuran_data = row2.selectbox(
+    ukuran_data = row2.radio(
         label = 'Pilih Data', 
-        options = ['Data Kecil', 'Data Sedang', 'Data Besar']
+        options = ['Data Kecil', 'Data Sedang', 'Data Besar'],
+        horizontal = True
     )
     
     from_data = Data()
