@@ -124,7 +124,7 @@ def input_parameter_fpa():
         format = '%d',
     )
 
-    is_chaotic = row4b.toggle('Gunakan Chaotic Maps?')
+    is_chaotic = row4B.toggle('Gunakan Chaotic Maps?')
     
     row4B.markdown('''
         <br><br><br>
