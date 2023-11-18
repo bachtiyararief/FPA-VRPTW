@@ -81,7 +81,7 @@ def input_parameter_fpa():
         <p align="justify">
         Ketika mengimplementasikan Algoritma <i>Flower Pollination</i>, perlu menentukan terlebih dahulu
         beberapa parameter untuk mengontrol perilaku algoritma tersebut. Masukan beberapa
-        parameter utama yang digunakan dalam FPA dengan benar.
+        parameter utama yang digunakan dalam FPA dengan benar.<br>
         </p>
         ''', unsafe_allow_html = True
     )                 
