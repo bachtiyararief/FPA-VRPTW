@@ -1,3 +1,4 @@
+import data
 import streamlit as st
 
 st.set_page_config(
@@ -45,6 +46,14 @@ def tampilkan_data(data = None):
         ''',    
         unsafe_allow_html = True
     )
+    
+    from_data = data.Data()
+    data_vrptw = from_data.ekstrak_data(
+        path = 'https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx', 
+        sheet_name = 'Data Kecil'
+    )
+
+    row2.dataframe(data_vrptw)
 
 if __name__ == '__main__':
     header()
