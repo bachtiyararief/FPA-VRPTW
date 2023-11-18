@@ -53,11 +53,10 @@ def tampilkan_data(data = None):
         sheet_name = 'Data Kecil'
     )
 
-    row2.dataframe(data_vrptw, width=1200, height=300)
-
-    row2.markdown(
-        f'<div style="text-align:center">{data_vrptw.to_html(index=False)}</div>',
-        unsafe_allow_html=True
+    row2.dataframe(
+        data_vrptw, 
+        width = 1200, 
+        height = 300
     )
 
 if __name__ == '__main__':
