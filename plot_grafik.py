@@ -41,7 +41,7 @@ def plot_pergerakan_fungsi_tujuan(y):
 
 def plot_rute_vrptw(data_coord, rute):
     nodes = dict()
-    for key, value in data[['Coord. X', 'Coord. Y']].to_dict('index').items():
+    for key, value in data_coord[['Coord. X', 'Coord. Y']].to_dict('index').items():
         if(key == 0):
             nodes.update({'Depot' : (value.get('Coord. X'), value.get('Coord. Y'))})
         else:
