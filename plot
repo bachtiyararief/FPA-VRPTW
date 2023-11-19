@@ -1,6 +1,7 @@
 import plotly.express as px
 
 def plot_pergerakan_fungsi_tujuan(x, y):
+    x = range(1, len(y), 1)
     fig = px.line(
         x = x,
         y = y,
