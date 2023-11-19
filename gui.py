@@ -98,7 +98,7 @@ def input_parameter_fpa():
     
     _, row4A, _, row4B, _ = st.columns([0.1, 4, 0.1, 4, 0.1])   
     
-    kapasitas_max = row4A.number_input(
+    maks_kapasitas_kendaraan = row4A.number_input(
         'Kapasitas Max Kendaraan', 
         min_value = 1,
         format = '%d',
@@ -179,18 +179,18 @@ def input_parameter_fpa():
         use_container_width = True
     )
     
-    return(run, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu)
+    return(run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu)
     
 if __name__ == '__main__':
     header()
     data_vrptw = tampilkan_data()
     intro_fpa()
-    run, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
+    run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
     if(run):
         jalankan_program(
             data_vrptw, 
-            kapasitas_max = kapasitas_max, 
+            maks_kapasitas_kendaraan = maks_kapasitas_kendaraan, 
             banyak_bunga = banyak_bunga, 
             step_size = step_size, 
             switch_probability = switch_probability, 
