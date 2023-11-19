@@ -41,6 +41,7 @@ def jalankan_program(data_vrptw, **parameter_fpa):
     )
     
     iterasi = 1
+    show = True
     maks_iterasi = maks_iterasi
 
     permutasi_tiap_iterasi = list()
@@ -51,32 +52,36 @@ def jalankan_program(data_vrptw, **parameter_fpa):
     while(iterasi <= maks_iterasi):
 
         permutasi = VRPTW.urutkan_posisi(posisi)
-        total_jarak = VRPTW.fungsi_tujuan(permutasi = permutasi, show = True)
+        total_jarak = VRPTW.fungsi_tujuan(permutasi = permutasi, show = show)
         nilai_optimum, index_bunga_terbaik = FPA.solusi_terbaik(fitness = total_jarak['Fungsi Tujuan'])
-        posisi_baru = FPA.penyerbukan(posisi, index_bunga_terbaik, show = True)
+        posisi_baru = FPA.penyerbukan(posisi, index_bunga_terbaik, show = show)
         permutasi_baru = VRPTW.urutkan_posisi(posisi_baru)
-        total_jarak_baru = VRPTW.fungsi_tujuan(permutasi = permutasi_baru, show = True)
+        total_jarak_baru = VRPTW.fungsi_tujuan(permutasi = permutasi_baru, show = show)
         banding = FPA.bandingkan_hasil(total_jarak['Fungsi Tujuan'], total_jarak_baru['Fungsi Tujuan'])
         posisi_akhir = FPA.update_posisi(hasil_banding = banding, posisi_awal = posisi, posisi_baru = posisi_baru)
         nilai_optimum_akhir, index_bunga_terbaik_akhir = FPA.solusi_terbaik(fitness = banding['Fungsi Tujuan Terbaik'])
         permutasi_bunga_terbaik = VRPTW.urutkan_posisi(posisi_akhir.loc[[index_bunga_terbaik_akhir]])
 
-        permutasi_tiap_iterasi.append(permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir])
         total_jarak_tiap_iterasi.append(nilai_optimum_akhir)
-        
-        print(f'\n========== ITERASI {iterasi} ==========')
-        print(f'\n{posisi}')
-        print(f'\n{permutasi}\n')
-        print(f'\n{total_jarak}')
-        print(f'\nBunga terbaik : {index_bunga_terbaik}')
-        print(posisi_baru)
-        print(f'\n{permutasi_baru}\n')
-        print(f'\n{total_jarak_baru}')
-        print(f'\n{banding}')
-        print(f'\n{posisi_akhir}')
-        print(f'\nBunga terbaik : {index_bunga_terbaik_akhir}')
+
+        if(iterasi == 1):
+            print(f'\n========== ITERASI {iterasi} ==========')
+            print(f'\n{posisi}')
+            print(f'\n{permutasi}\n')
+            print(f'\n{total_jarak}')
+            print(f'\nBunga terbaik : {index_bunga_terbaik}')
+            print(posisi_baru)
+            print(f'\n{permutasi_baru}\n')
+            print(f'\n{total_jarak_baru}')
+            print(f'\n{banding}')
+            print(f'\n{posisi_akhir}')
+            print(f'\nBunga terbaik : {index_bunga_terbaik_akhir}')
+            
         VRPTW.perhitungan_fungsi_tujuan(solusi = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir], show = True)
+        
         posisi = posisi_akhir
         iterasi += 1
-        
-    return(permutasi_tiap_iterasi, total_jarak_tiap_iterasi)
+
+    permutasi_terbaik = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir].tolist()
+    
+    return(permutasi_terbaik, total_jarak_tiap_iterasi)
