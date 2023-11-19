@@ -44,4 +44,4 @@ def plot_pergerakan_fungsi_tujuan(x, y):
         dtick = 1
     )
 
-return(fig)
+    return(fig)
