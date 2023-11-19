@@ -225,11 +225,11 @@ if __name__ == '__main__':
         
         for i in range(len(jarak_potong)):
             row6.markdown(
-                f'Rute-{i+1} &nbsp; {"-".join(str(num) for num in rute_potong[i])}&nbsp;Jarak = {jarak_potong[i]}',
+                f'Rute-{i+1} &nbsp; {"-".join(str(num) for num in rute_potong[i])}&nbsp;&nbsp;Jarak = {round(jarak_potong[i], 2)}',
                 unsafe_allow_html = True
             )        
         
-        row6.markdown(f'Total Jarak : {hasil_terbaik[-1]}')
+        row6.markdown(f'<br>Total Jarak : {hasil_terbaik[-1]}', unsafe_allow_html = True)
     
 
         
