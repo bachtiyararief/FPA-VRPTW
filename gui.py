@@ -204,7 +204,7 @@ if __name__ == '__main__':
     run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
     if(run):
-        _, hasil_terbaik = jalankan_program(
+        permutasi_terbaik, hasil_terbaik = jalankan_program(
             data_vrptw, 
             maks_kapasitas_kendaraan = maks_kapasitas_kendaraan, 
             banyak_bunga = banyak_bunga, 
@@ -220,6 +220,8 @@ if __name__ == '__main__':
 
         hasil_perhitungan(hasil = hasil_terbaik)
         
+        _, row6, _ = st.columns([0.1, 8, 0.1])
+        row6.markdown(f'Rute Terbaik : {permutasi_terbaik[:-1]}')
     
     
 
