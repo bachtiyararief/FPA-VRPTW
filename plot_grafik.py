@@ -46,14 +46,17 @@ def plot_rute_vrptw(data_coord, rute):
             nodes.update({'Depot' : (value.get('Coord. X'), value.get('Coord. Y'))})
         else:
             nodes.update({f'Customer {key}' : (value.get('Coord. X'), value.get('Coord. Y'))})
-    
+
+    max_routes = 0
     routes = list()
     for i in rute:
         r = list(map(lambda x: 'Depot' if x == 0 else f'Customer {x}', i))
-        routes.append(r)    
-    
+        if(max_routes <= len(r)):
+            max_routes = len(r)
+        routes.append(r)
+
     nodes_df = pd.DataFrame(list(nodes.values()), columns=['X', 'Y'], index=nodes.keys())
-    routes_df = pd.DataFrame(routes, columns=[f'Node_{i}' for i in range(1, len(routes)+1)])
+    routes_df = pd.DataFrame(routes, columns=[f'Node_{i}' for i in range(1, max_routes+1)])
     
     fig = px.scatter(nodes_df, x='X', y='Y', text=nodes_df.index, title='Vehicle Routing Problem with Time Windows')
     color = px.colors.sequential.Plasma_r + px.colors.sequential.Turbo_r + px.colors.sequential.Viridis
