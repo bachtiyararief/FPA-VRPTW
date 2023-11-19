@@ -91,4 +91,4 @@ def plot_rute_vrptw(data_coord, rute):
         hovermode = 'closest'
     )
     
-    return(nodes, routes)
+    return(fig)
