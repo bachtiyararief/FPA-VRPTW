@@ -50,45 +50,24 @@ def plot_rute_vrptw(data_coord, rute):
     routes = list()
     for i in rute:
         r = list(map(lambda x: 'Depot' if x == 0 else f'Customer {x}', i))
-        routes.append(r)
+        routes.append(r)    
+    
+    nodes_df = pd.DataFrame(list(nodes.values()), columns=['X', 'Y'], index=nodes.keys())
+    routes_df = pd.DataFrame(routes, columns=[f'Node_{i}' for i in range(1, 8)])
+    
+    fig = px.scatter(nodes_df, x='X', y='Y', text=nodes_df.index, title='Vehicle Routing Problem with Time Windows')
+    color = px.colors.sequential.Plasma_r + px.colors.sequential.Turbo_r + px.colors.sequential.Viridis
+    for i in range(len(routes_df)):
+        route = routes_df.iloc[i].dropna().tolist()
+        route.append(route[0])  # To close the loop
+        fig.add_trace(px.line(nodes_df.loc[route], x='X', y='Y', color_discrete_sequence=[color[i]]).data[0])
 
-    fig = go.Figure()
-    for node, (x, y) in nodes.items():
-        fig.add_trace(
-            go.Scatter(
-                x = [x], 
-                y = [y], 
-                mode = 'markers', 
-                text = [node], 
-                name = node
-            )
-        )
-    
-    i = 0
-    for route in routes:
-        x = [nodes[node][0] for node in route]
-        y = [nodes[node][1] for node in route]
-        x.append(x[0])
-        y.append(y[0])
-        fig.add_trace(
-            go.Scatter(
-                x = x, 
-                y = y, 
-                mode = 'lines', 
-                name = 'Route'
-            )
-        )
-        i += 1
-        
     fig.update_layout(
-        title = 'Rute Terbaik Vehicle Routing Problem with Time Windows <br><sup>Pada Hasil Perhitungan FPA</sup>',
-        xaxis = dict(title = 'X'),
-        yaxis = dict(title = 'Y'),
-        height = 650,
-        width = 1200,
-        plot_bgcolor = 'rgba(0, 0, 0, 0)',
-        showlegend = False,
-        hovermode = 'closest'
+        height=650,
+        width=1200,
+        plot_bgcolor='rgba(0, 0, 0, 0)',
+        showlegend=False,
+        hovermode='closest'
     )
-    
+
     return(fig)
