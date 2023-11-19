@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from data import Data
 from run_fpa_vrptw import *
 from plot_grafik import *
@@ -222,12 +223,19 @@ if __name__ == '__main__':
         
         _, row6, _ = st.columns([0.1, 8, 0.1])
         row6.markdown(f'Rute Terbaik : {"-".join(str(num) for num in permutasi_terbaik.loc[0].tolist())}')
-        
-        for i in range(len(jarak_potong)):
-            row6.markdown(
-                f'Rute-{i+1} &nbsp; {"-".join(str(num) for num in rute_potong[i])}&nbsp;&nbsp;Jarak = {round(jarak_potong[i], 2)}',
-                unsafe_allow_html = True
-            )        
+
+        rute_terbaik = pd.DataFrame({
+                'Index' : [f'Rute - {i}' for i in range(len(jarak_potong))],
+                'Rute' : rute_potong, 
+                'Jarak' : jarak_potong
+            }
+        )
+
+        row6.dataframe(
+            rute_terbaik, 
+            width = 1200, 
+            height = 300
+        )
         
         row6.markdown(f'<br>Total Jarak : {hasil_terbaik[-1]}', unsafe_allow_html = True)
     
