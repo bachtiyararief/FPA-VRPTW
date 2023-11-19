@@ -225,7 +225,7 @@ if __name__ == '__main__':
         row6.markdown(f'Rute Terbaik : {"-".join(str(num) for num in permutasi_terbaik.loc[0].tolist())}')
 
         rute_terbaik = pd.DataFrame({
-                'Index' : [f'Rute - {i}' for i in range(len(jarak_potong))],
+                'Index' : [f'Rute - {i+1}' for i in range(len(jarak_potong))],
                 'Rute' : rute_potong, 
                 'Jarak' : jarak_potong
             }
@@ -234,7 +234,8 @@ if __name__ == '__main__':
         row6.dataframe(
             rute_terbaik, 
             width = 1200, 
-            height = 300
+            height = 250,
+            hide_index = True
         )
         
         row6.markdown(f'<br>Total Jarak : {hasil_terbaik[-1]}', unsafe_allow_html = True)
