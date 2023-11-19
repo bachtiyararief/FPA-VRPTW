@@ -43,7 +43,8 @@ class VehicleRoutingProblemwithTimeWindows():
         total_jarak_sebelum = [0]
         total_permintaan = total_jarak = lama_pelayanan = 0
         
-        rute = []
+        rute, rute_terpotong, jarak_terpotong = list(), list(), list()
+        
         dari_depot = True
         banyak_pelanggan = len(solusi)
         
@@ -83,6 +84,9 @@ class VehicleRoutingProblemwithTimeWindows():
                         else:
                             total_jarak += jarak
                             lama_pelayanan, total_permintaan = 0, 0
+
+                            rute_terpotong.append(rute + [0])
+                            jarak_terpotong.append(total_jarak - total_jarak_sebelum[-1])
                             
                             if(show):
                                 print(f'{"-".join(map(str, rute))}-0', end = '\t')
@@ -93,6 +97,8 @@ class VehicleRoutingProblemwithTimeWindows():
                     else :
                         total_jarak += jarak
                         total_jarak_sebelum.append(total_jarak)
+                        rute_terpotong.append(rute + [0])
+                        jarak_terpotong.append(total_jarak - total_jarak_sebelum[-2])
                         
                         if(show):
                             print(f'{"-".join(map(str, rute))}-0', end = '\t')
@@ -135,7 +141,8 @@ class VehicleRoutingProblemwithTimeWindows():
                             dari_depot = True
                             lama_pelayanan = total_permintaan = 0
                             total_jarak += self.perhitungan.jarak_euclidian(customer_2, depot)
-                            
+                            rute_terpotong.append(rute + [0])
+                            jarak_terpotong.append(total_jarak - total_jarak_sebelum[-1])
                             if(show):
                                 print(f'{"-".join(map(str, rute))}-0', end = '\t')
                                 print(f'Jarak = {total_jarak - total_jarak_sebelum[-1]: .2f}')
@@ -145,6 +152,8 @@ class VehicleRoutingProblemwithTimeWindows():
                     else :
                         total_jarak += self.perhitungan.jarak_euclidian(customer_2, depot)
                         total_jarak_sebelum.append(total_jarak)
+                        rute_terpotong.append(rute + [0])
+                        jarak_terpotong.append(total_jarak - total_jarak_sebelum[-2])
                         
                         if(show):
                             print(f'{"-".join(map(str, rute))}-0', end = '\t')
@@ -155,7 +164,7 @@ class VehicleRoutingProblemwithTimeWindows():
         if(show):
             print(f'\nTotal Jarak = {total_jarak : .2f}\n')
         
-        return(total_jarak)
+        return(total_jarak, rute_terpotong, jarak_terpotong)
     
     def fungsi_tujuan(
         self, permutasi: pandas.DataFrame, show: bool = False
@@ -171,7 +180,7 @@ class VehicleRoutingProblemwithTimeWindows():
                 print(f'========= Solusi {i+1} =========')
                 print(f'{"-".join(map(str, solusi))}\n')
             
-            y = self.perhitungan_fungsi_tujuan(solusi, show)
+            y, _, _ = self.perhitungan_fungsi_tujuan(solusi, show)
             evaluasi_bunga.append(y)
         
         hasil = pandas.DataFrame({
