@@ -238,4 +238,6 @@ if __name__ == '__main__':
             hide_index = True
         )
 
+        fig_rute = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_terbaik)
+        row6.plotly_chart(fig_rute, use_container_width = True)
         
