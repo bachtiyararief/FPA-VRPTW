@@ -81,7 +81,5 @@ def jalankan_program(data_vrptw, **parameter_fpa):
         
         posisi = posisi_akhir
         iterasi += 1
-
-        permutasi_terbaik = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir].tolist()
     
-    return(permutasi_terbaik, total_jarak_tiap_iterasi)
+    return(permutasi_bunga_terbaik, total_jarak_tiap_iterasi)
