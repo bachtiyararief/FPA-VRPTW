@@ -204,7 +204,7 @@ if __name__ == '__main__':
     run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
     if(run):
-        permutasi_terbaik, hasil_terbaik = jalankan_program(
+        permutasi_terbaik, hasil_terbaik, rute_potong, jarak_potong = jalankan_program(
             data_vrptw, 
             maks_kapasitas_kendaraan = maks_kapasitas_kendaraan, 
             banyak_bunga = banyak_bunga, 
@@ -221,11 +221,11 @@ if __name__ == '__main__':
         hasil_perhitungan(hasil = hasil_terbaik)
         
         _, row6, _ = st.columns([0.1, 8, 0.1])
-        row6.dataframe(
-            permutasi_terbaik, 
-            width = 1200, 
-            height = 300
-        )
+        row6.markdown(f'{"-".join(permutasi_terbaik.loc[0].tolist()}')
+        
+        for i in range(len(jarak_potong)):
+            row6.markdown(f'{"-".join(rute_potong[i]}\t{jarak_potong[i]}')        
+        
         row6.markdown(f'Total Jarak : {hasil_terbaik[-1]}')
     
 
