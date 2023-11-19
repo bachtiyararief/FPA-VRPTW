@@ -185,7 +185,7 @@ if __name__ == '__main__':
     header()
     data_vrptw = tampilkan_data()
     intro_fpa()
-    run, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
+    run, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
     if(run):
         jalankan_program(
