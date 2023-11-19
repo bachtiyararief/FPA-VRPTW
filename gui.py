@@ -229,7 +229,7 @@ if __name__ == '__main__':
         
         _, row6, _ = st.columns([0.1, 8, 0.1])
         row6.markdown('<h4>🏆 Rute Terbaik</h4>', unsafe_allow_html = True)
-        row6.markdown(f'{"-".join(str(num) for num in permutasi_terbaik.loc[0].tolist())}')
+        row6.markdown(f'<b>Rute</b> : {"-".join(str(num) for num in permutasi_terbaik.loc[0].tolist())}')
         row6.markdown(f'<b>Total Jarak</b> : {hasil_terbaik[-1]}', unsafe_allow_html = True)
         row6.dataframe(
             rute_terbaik, 
