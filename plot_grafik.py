@@ -28,7 +28,8 @@ def plot_pergerakan_fungsi_tujuan(y):
             showline = True,
             linewidth = 1,
             color = '#7E38B7',
-            linecolor = '#7E38B7'
+            linecolor = '#7E38B7',
+            nticks = 10
         )
     )
     
