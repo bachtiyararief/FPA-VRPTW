@@ -22,7 +22,7 @@ def plot_pergerakan_fungsi_tujuan(y):
             linecolor = '#7E38B7'
         ),
         xaxis = dict(
-            range = range(len(y)+1),
+            range = [1, len(y)],
             title = 'Iterasi',
             showline = True,
             linewidth = 1,
