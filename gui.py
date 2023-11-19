@@ -182,6 +182,21 @@ def input_parameter_fpa():
     )
     
     return(run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu)
+
+def hasil_perhitungan(permutasi = None, hasil):
+    _, row5, _ = st.columns([0.1, 8, 0.1])
+    row5.markdown('<h4>⭐ Hasil Perhitungan</h4>', unsafe_allow_html = True)
+    row5.markdown('''
+        <p align="justify">
+        Ketika mengimplementasikan Algoritma <i>Flower Pollination</i>, perlu menentukan terlebih dahulu
+        beberapa parameter untuk mengontrol perilaku algoritma tersebut. Masukan beberapa
+        parameter utama yang digunakan dalam FPA dengan benar.<br>
+        </p>
+        ''', unsafe_allow_html = True
+    )   
+    
+    fig = plot_pergerakan_fungsi_tujuan(y = hasil)
+    row5.plotly_chart(fig, use_container_width=True)
     
 if __name__ == '__main__':
     header()
@@ -204,6 +219,9 @@ if __name__ == '__main__':
             mu = mu
         )
 
+        hasil_perhitungan(hasil = hasil_terbaik)
+        
+    
     
 
         
