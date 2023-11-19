@@ -25,10 +25,9 @@ class FlowerPollination():
         
         chaotic_type = chaotic.get('type', None)
         default_params_chaotic = chaotic.get('params', None)
-        
+
+        self.chaotic_function = None
         if(chaotic_type is None):
-            self.chaotic_function = None
-        else:
             self.chaotic_maps(chaotic_type, default_params_chaotic)
     
     def chaotic_maps(
