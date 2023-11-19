@@ -239,5 +239,5 @@ if __name__ == '__main__':
         )
 
         fig_vrptw = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_potong)
-        row6.plotly_chart(fig_vrptw, use_container_width = True)
+        row6.plotly_chart(fig_vrptw.to_dict(), use_container_width = True)
         
