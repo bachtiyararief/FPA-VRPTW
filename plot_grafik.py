@@ -22,20 +22,12 @@ def plot_pergerakan_fungsi_tujuan(y):
             linecolor = '#7E38B7'
         ),
         xaxis = dict(
+            range = range(len(y)+1),
             title = 'Iterasi',
             showline = True,
             linewidth = 1,
             color = '#7E38B7',
             linecolor = '#7E38B7'
-        ),
-        title = dict(
-            text = '<b>Pergerakan<span style="color:#541675"> Fungsi Tujuan</span> VRP-TW</b><br><sup><sup>dengan <i>Algoritma Flower Polination</i> Tiap Iterasi<sup><sup>',
-            font = dict(
-                family = 'sans serif',
-                size = 30,
-                color = '#7E38B7'
-            ),
-            y = 0.95
         )
     )
     
