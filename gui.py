@@ -5,7 +5,7 @@ from plot_grafik import *
 
 st.set_page_config(
     page_title = 'FPA-VRPTW Ismi',
-    page_icon = '-',
+    page_icon = '🚗',
     layout = 'wide'
 )
 
