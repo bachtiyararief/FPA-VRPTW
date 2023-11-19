@@ -48,7 +48,7 @@ def plot_rute_vrptw(data_coord, rute):
             nodes.update({f'Customer {key}' : (value.get('Coord. X'), value.get('Coord. Y'))})
     
     routes = list()
-    for i in rute:
+    for i in rute['Rute'].tolist():
         r = list(map(lambda x: 'Depot' if x == 0 else f'Customer {x}', i))
         routes.append(r)
 
