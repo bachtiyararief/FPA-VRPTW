@@ -1,7 +1,7 @@
 import streamlit as st
 from data import Data
 from run_fpa_vrptw import *
-from plot import *
+from plot_grafik import *
 
 st.set_page_config(
     page_title = 'FPA-VRPTW Ismi',
@@ -204,6 +204,6 @@ if __name__ == '__main__':
             mu = mu
         )
 
-        
+    
 
         
