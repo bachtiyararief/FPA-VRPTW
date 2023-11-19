@@ -132,7 +132,7 @@ def input_parameter_fpa():
         format = '%.4f'
     )
 
-    max_iterasi = row4A.number_input(
+    maks_iterasi = row4A.number_input(
         'Iterasi Maksimum', 
         min_value = 1,
         placeholder = "Masukan bilangan bulat > 0",
@@ -178,21 +178,8 @@ def input_parameter_fpa():
         'Jalankan Program',
         use_container_width = True
     )
-
-    parameter_fpa_vrptw = dict(
-        kapasitas_max = kapasitas_max, 
-        banyak_bunga = banyak_bunga, 
-        step_size = step_size, 
-        switch_probability = switch_probability, 
-        lamda = lamda, 
-        max_iterasi = max_iterasi, 
-        tipe_chaotic = tipe_chaotic, 
-        x_awal = x_awal,
-        alpha = alpha,
-        mu = mu
-    )
     
-    return(run, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, max_iterasi, tipe_chaotic, x_awal, alpha, mu)
+    return(run, kapasitas_max, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu)
     
 if __name__ == '__main__':
     header()
@@ -208,7 +195,7 @@ if __name__ == '__main__':
             step_size = step_size, 
             switch_probability = switch_probability, 
             lamda = lamda, 
-            max_iterasi = max_iterasi, 
+            maks_iterasi = maks_iterasi, 
             tipe_chaotic = tipe_chaotic, 
             x_awal = x_awal,
             alpha = alpha,
