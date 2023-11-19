@@ -53,7 +53,7 @@ def plot_rute_vrptw(data_coord, rute):
         routes.append(r)    
     
     nodes_df = pd.DataFrame(list(nodes.values()), columns=['X', 'Y'], index=nodes.keys())
-    routes_df = pd.DataFrame(routes, columns=[f'Node_{i}' for i in range(1, 8)])
+    routes_df = pd.DataFrame(routes, columns=[f'Node_{i}' for i in range(1, len(routes)+1)])
     
     fig = px.scatter(nodes_df, x='X', y='Y', text=nodes_df.index, title='Vehicle Routing Problem with Time Windows')
     color = px.colors.sequential.Plasma_r + px.colors.sequential.Turbo_r + px.colors.sequential.Viridis
