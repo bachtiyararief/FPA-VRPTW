@@ -1,5 +1,5 @@
 streamlit
 openpyxl
 pandas
-scipy
+scipy=1.11.3
 functools
