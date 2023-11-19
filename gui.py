@@ -224,7 +224,10 @@ if __name__ == '__main__':
         row6.markdown(f'Rute Terbaik : {"-".join(str(num) for num in permutasi_terbaik.loc[0].tolist())}')
         
         for i in range(len(jarak_potong)):
-            row6.markdown(f'Rute-{i+1} \t{"-".join(str(num) for num in rute_potong[i])}\tJarak = {jarak_potong[i]}')        
+            row6.markdown(
+                f'Rute-{i+1} &nbsp; {"-".join(str(num) for num in rute_potong[i])}&nbsp;Jarak = {jarak_potong[i]}',
+                unsafe_allow_html = True
+            )        
         
         row6.markdown(f'Total Jarak : {hasil_terbaik[-1]}')
     
