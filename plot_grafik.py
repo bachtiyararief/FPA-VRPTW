@@ -81,7 +81,7 @@ def plot_rute_vrptw(data_coord, rute):
         i += 1
         
     fig.update_layout(
-        title = 'Rute Terbaik Vehicle Routing Problem with Time Windows <sup>Pada Hasil Perhitungan FPA</sup>',
+        title = 'Rute Terbaik Vehicle Routing Problem with Time Windows <br><sup>Pada Hasil Perhitungan FPA</sup>',
         xaxis = dict(title = 'X'),
         yaxis = dict(title = 'Y'),
         height = 650,
