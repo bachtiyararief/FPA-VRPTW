@@ -183,7 +183,7 @@ def input_parameter_fpa():
     
     return(run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu)
 
-def hasil_perhitungan(permutasi = None, hasil):
+def hasil_perhitungan(permutasi = None, hasil = None):
     _, row5, _ = st.columns([0.1, 8, 0.1])
     row5.markdown('<h4>⭐ Hasil Perhitungan</h4>', unsafe_allow_html = True)
     row5.markdown('''
