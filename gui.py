@@ -1,6 +1,7 @@
 import streamlit as st
 from data import Data
 from run_fpa_vrptw import *
+from plot import *
 
 st.set_page_config(
     page_title = 'FPA-VRPTW Ismi',
@@ -173,8 +174,9 @@ def input_parameter_fpa():
             ) 
             
     row4B.markdown('<br>', unsafe_allow_html = True)
-                   
-    run = row4B.button(
+
+    _, row4C, _ = st.columns([0.1, 8, 0.1])
+    run = row4C.button(
         'Jalankan Program',
         use_container_width = True
     )
@@ -188,7 +190,7 @@ if __name__ == '__main__':
     run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
     if(run):
-        jalankan_program(
+        _, hasil_terbaik = jalankan_program(
             data_vrptw, 
             maks_kapasitas_kendaraan = maks_kapasitas_kendaraan, 
             banyak_bunga = banyak_bunga, 
@@ -201,3 +203,7 @@ if __name__ == '__main__':
             alpha = alpha,
             mu = mu
         )
+
+        
+
+        
