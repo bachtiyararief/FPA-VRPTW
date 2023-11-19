@@ -58,7 +58,7 @@ def jalankan_program(data_vrptw, **parameter_fpa):
         nilai_optimum_akhir, index_bunga_terbaik_akhir = FPA.solusi_terbaik(fitness = banding['Fungsi Tujuan Terbaik'])
         permutasi_bunga_terbaik = VRPTW.urutkan_posisi(posisi_akhir.loc[[index_bunga_terbaik_akhir]])
 
-        permutasi_tiap_iterasi.append(permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir])
+        permutasi_tiap_iterasi.append(permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir].tolist())
         total_jarak_tiap_iterasi.append(nilai_optimum_akhir)
         
         print(f'\n========== ITERASI {iterasi} ==========')
