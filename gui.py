@@ -246,6 +246,7 @@ if __name__ == '__main__':
         
         list_hasil = [int(item.replace('Rute - ', ''))-1 for item in rute_dipilih]
         rute_dipilih = [rute_potong[i] for i in list_hasil]
+        row6.markdown(f'{rute_dipilih}')
         
         fig_vrptw = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_potong)
         row6.plotly_chart(fig_vrptw.to_dict(), use_container_width = True)
