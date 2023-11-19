@@ -171,11 +171,10 @@ def input_parameter_fpa():
                 'mu (μ)', 
                 min_value = 0.0000, 
                 format = '%.4f'
-            ) 
-            
-    row4B.markdown('<br>', unsafe_allow_html = True)
+            )
 
     _, row4C, _ = st.columns([0.1, 8, 0.1])
+    row4C.markdown('<br>', unsafe_allow_html = True)
     run = row4C.button(
         'Jalankan Program',
         use_container_width = True
