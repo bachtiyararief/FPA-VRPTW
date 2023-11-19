@@ -1,4 +1,6 @@
 import vrp, fpa
+import warnings
+warnings.filterwarnings("ignore")
 
 def jalankan_program(data_vrptw, **parameter_fpa):
 
