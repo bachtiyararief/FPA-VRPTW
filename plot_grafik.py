@@ -48,11 +48,10 @@ def plot_rute_vrptw(data_coord, rute):
             nodes.update({f'Customer {key}' : (value.get('Coord. X'), value.get('Coord. Y'))})
     
     routes = list()
-    for i in rute['Rute'].tolist():
+    for i in rute:
         r = list(map(lambda x: 'Depot' if x == 0 else f'Customer {x}', i))
         routes.append(r)
 
-    """
     fig = go.Figure()
     for node, (x, y) in nodes.items():
         fig.add_trace(
@@ -80,8 +79,7 @@ def plot_rute_vrptw(data_coord, rute):
             )
         )
         i += 1
-    
-    # Update layout
+        
     fig.update_layout(
         title = 'Rute Terbaik Vehicle Routing Problem with Time Windows <sup>Pada Hasil Perhitungan FPA</sup>',
         xaxis = dict(title = 'X'),
@@ -92,6 +90,5 @@ def plot_rute_vrptw(data_coord, rute):
         showlegend = False,
         hovermode = 'closest'
     )
-    """
     
     return(nodes, routes)
