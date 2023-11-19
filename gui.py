@@ -221,7 +221,7 @@ if __name__ == '__main__':
         hasil_perhitungan(hasil = hasil_terbaik)
         
         _, row6, _ = st.columns([0.1, 8, 0.1])
-        row6.markdown(f'Rute Terbaik : {' - '.join(permutasi_terbaik[:-1])}')
+        row6.markdown(f'Rute Terbaik : {" - ".join(permutasi_terbaik[:-1])}')
         row6.markdown(f'Total Jarak : {hasil_terbaik[:-1]}')
     
 
