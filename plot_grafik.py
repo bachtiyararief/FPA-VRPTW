@@ -68,11 +68,11 @@ def plot_rute_vrptw(data_coord, rute):
         fig.add_trace(px.line(nodes_df.loc[route], x='X', y='Y', color_discrete_sequence=[color[i]]).data[0])
 
     fig.update_layout(
-        height=650,
-        width=1200,
-        plot_bgcolor='rgba(0, 0, 0, 0)',
-        showlegend=False,
-        hovermode='closest'
+        height = 650,
+        width = 1200,
+        plot_bgcolor = 'rgba(0, 0, 0, 0)',
+        showlegend = False,
+        hovermode = 'closest'
     )
 
     return(fig)
