@@ -77,9 +77,13 @@ def jalankan_program(data_vrptw, **parameter_fpa):
             print(f'\n{posisi_akhir}')
             print(f'\nBunga terbaik : {index_bunga_terbaik_akhir}')
             
-        VRPTW.perhitungan_fungsi_tujuan(solusi = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir], show = True)
-        
+        _, rute_potong, jarak_potong = VRPTW.perhitungan_fungsi_tujuan(
+            solusi = permutasi_bunga_terbaik.loc[index_bunga_terbaik_akhir], 
+            show = True
+        )
+
+        permutasi_bunga_terbaik = permutasi_bunga_terbaik.reset_index(drop = True)
         posisi = posisi_akhir
         iterasi += 1
     
-    return(permutasi_bunga_terbaik, total_jarak_tiap_iterasi)
+    return(permutasi_bunga_terbaik, total_jarak_tiap_iterasi, rute_potong, jarak_potong)
