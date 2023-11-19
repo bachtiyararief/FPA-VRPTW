@@ -11,6 +11,7 @@ def jalankan_program(data_vrptw, **parameter_fpa):
     maks_iterasi = parameter_fpa.get('maks_iterasi')
     tipe_chaotic = parameter_fpa.get('tipe_chaotic')
 
+    x_awal = alpha = mu = None
     if(tipe_chaotic is not None):
         x_awal = parameter_fpa.get('x_awal')
         alpha = parameter_fpa.get('alpha')
