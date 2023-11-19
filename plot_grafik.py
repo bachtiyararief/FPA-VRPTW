@@ -29,6 +29,7 @@ def plot_pergerakan_fungsi_tujuan(y):
             linewidth = 1,
             color = '#7E38B7',
             linecolor = '#7E38B7',
+            tickmode = 'linear',
             nticks = 10
         )
     )
