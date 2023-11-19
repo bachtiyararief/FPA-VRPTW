@@ -244,7 +244,7 @@ if __name__ == '__main__':
             default = rute_terbaik['Index'].tolist()
         )
         
-        list_hasil = [int(item.replace('Rute ', ''))-1 for item in rute_dipilih]
+        list_hasil = [int(item.replace('Rute - ', ''))-1 for item in rute_dipilih]
         rute_dipilih = [rute_potong[i] for i in list_hasil]
         
         fig_vrptw = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_potong)
