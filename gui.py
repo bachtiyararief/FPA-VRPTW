@@ -221,10 +221,10 @@ if __name__ == '__main__':
         hasil_perhitungan(hasil = hasil_terbaik)
         
         _, row6, _ = st.columns([0.1, 8, 0.1])
-        row6.markdown(f'{permutasi_terbaik.loc[0].tolist()}')
+        row6.markdown(f'{'-'.join(str(num) for num in permutasi_terbaik.loc[0].tolist())}')
         
         for i in range(len(jarak_potong)):
-            row6.markdown(f'{"-".join(rute_potong[i])}\t{jarak_potong[i]}')        
+            row6.markdown(f'{'-'.join(str(num) for num in rute_potong)}\t{jarak_potong[i]}')        
         
         row6.markdown(f'Total Jarak : {hasil_terbaik[-1]}')
     
