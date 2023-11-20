@@ -247,5 +247,5 @@ if __name__ == '__main__':
         fig_vrptw = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_potong)
         row6.plotly_chart(fig_vrptw.to_dict(), use_container_width = True)
 
-        row6.markdown(f'<b>Waktu Eksekusi Program</b> : {round(execution_time,2)}', unsafe_allow_html = True)
+        row6.markdown(f'<i><b>Waktu Eksekusi Program</b> : {round(execution_time,2)} s</i>', unsafe_allow_html = True)
         
