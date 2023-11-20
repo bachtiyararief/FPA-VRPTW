@@ -15,7 +15,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 def header():
     _, row1, _ = st.columns([0.1, 8, 0.1])
     row1.markdown('<h1>Penyelesaian VRPTW dengan Algoritma Flower Pollination</h1>', unsafe_allow_html = True)
-    row1.markdown('<h3><a href="https://id.linkedin.com/in/ismi-yayuk-rakhmawati-366917126">Ismi Yayuk Rakhmawati</a> - 11XXXXXX</h3>', 
+    row1.markdown('<h4><a href="https://id.linkedin.com/in/ismi-yayuk-rakhmawati-366917126">Ismi Yayuk Rakhmawati</a> - 11XXXXXX</h4>', 
                   unsafe_allow_html = True)
 
     row1.markdown('<h4>🚗 Latar Belakang</h4>', unsafe_allow_html = True)
