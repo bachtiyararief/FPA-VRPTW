@@ -1,3 +1,4 @@
+import time, resource
 import streamlit as st
 import pandas as pd
 from data import Data
@@ -206,6 +207,10 @@ if __name__ == '__main__':
     run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
     if(run):
+        rusage_denom = 1024.0
+        before_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / rusage_denom
+        
+        start_time = time.time()
         permutasi_terbaik, hasil_terbaik, rute_potong, jarak_potong = jalankan_program(
             data_vrptw, 
             maks_kapasitas_kendaraan = maks_kapasitas_kendaraan, 
@@ -219,7 +224,11 @@ if __name__ == '__main__':
             alpha = alpha,
             mu = mu
         )
-
+        end_time = time.time()
+        execution_time = end_time - start_time
+        after_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / rusage_denom
+        memory_usage = after_memory - before_memory
+        
         hasil_perhitungan(hasil = hasil_terbaik)
         rute_terbaik = pd.DataFrame({
                 'Index' : [f'Rute - {i+1}' for i in range(len(jarak_potong))],
@@ -232,12 +241,16 @@ if __name__ == '__main__':
         row6.markdown('<h4>🏆 Rute Terbaik</h4>', unsafe_allow_html = True)
         row6.markdown(f'<b>Rute</b> : {"-".join(str(num) for num in permutasi_terbaik.loc[0].tolist())}', unsafe_allow_html = True)
         row6.markdown(f'<b>Total Jarak</b> : {hasil_terbaik[-1]}', unsafe_allow_html = True)
+        
         row6.dataframe(
             rute_terbaik, 
             width = 1200, 
             height = 250,
             hide_index = True
         )
+
+        row6.markdown(f'<b>Waktu Eksekusi</b> : {execution_time}', unsafe_allow_html = True)
+        row6.markdown(f'<b>Memori Digunakan</b> : {memory_usage} kb', unsafe_allow_html = True)
         
         fig_vrptw = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_potong)
         row6.plotly_chart(fig_vrptw.to_dict(), use_container_width = True)
