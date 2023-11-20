@@ -248,7 +248,7 @@ if __name__ == '__main__':
             height = 250,
             hide_index = True
         )
-
+ 
         row6.markdown(f'<b>Waktu Eksekusi</b> : {execution_time}', unsafe_allow_html = True)
         row6.markdown(f'<b>Memori Digunakan</b> : {memory_usage} kb', unsafe_allow_html = True)
         
