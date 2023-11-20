@@ -61,7 +61,7 @@ def tampilkan_data():
     
     from_data = Data()
     data_vrptw = from_data.ekstrak_data(
-        path = 'https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW (2).xlsx', 
+        path = 'https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/Data VRP-TW.xlsx', 
         sheet_name = ukuran_data
     )
     
