@@ -32,7 +32,7 @@ def header():
     
     row1.markdown('''
         <p align="center">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*yYIxxq81QOgq5DuqEnrGcg.gif" width="558" height="300">
+        <img src="https://raw.githubusercontent.com/bachtiyararief/FPA-VRPTW/main/VRP.png" width="390" height="300">
         </p>
         <p align="center"><b>Simulasi <i>Vehicle Routing Problem</i></b></p>
         ''',
