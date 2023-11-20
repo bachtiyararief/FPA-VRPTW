@@ -1,4 +1,4 @@
-import time, resource
+import time
 import streamlit as st
 import pandas as pd
 from data import Data
@@ -206,10 +206,7 @@ if __name__ == '__main__':
     intro_fpa()
     run, maks_kapasitas_kendaraan, banyak_bunga, step_size, switch_probability, lamda, maks_iterasi, tipe_chaotic, x_awal, alpha, mu = input_parameter_fpa()
 
-    if(run):
-        rusage_denom = 1024.0
-        before_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / rusage_denom
-        
+    if(run):        
         start_time = time.time()
         permutasi_terbaik, hasil_terbaik, rute_potong, jarak_potong = jalankan_program(
             data_vrptw, 
@@ -226,8 +223,6 @@ if __name__ == '__main__':
         )
         end_time = time.time()
         execution_time = end_time - start_time
-        after_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / rusage_denom
-        memory_usage = after_memory - before_memory
         
         hasil_perhitungan(hasil = hasil_terbaik)
         rute_terbaik = pd.DataFrame({
@@ -248,10 +243,9 @@ if __name__ == '__main__':
             height = 250,
             hide_index = True
         )
- 
-        row6.markdown(f'<b>Waktu Eksekusi</b> : {execution_time}', unsafe_allow_html = True)
-        row6.markdown(f'<b>Memori Digunakan</b> : {memory_usage} kb', unsafe_allow_html = True)
         
         fig_vrptw = plot_rute_vrptw(data_coord = data_vrptw, rute = rute_potong)
         row6.plotly_chart(fig_vrptw.to_dict(), use_container_width = True)
+
+        row6.markdown(f'<b>Waktu Eksekusi Program</b> : {round(execution_time,2)}', unsafe_allow_html = True)
         
