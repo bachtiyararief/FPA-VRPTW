@@ -188,9 +188,9 @@ def hasil_perhitungan(permutasi = None, hasil = None):
     row5.markdown('<h4>⭐ Hasil Perhitungan</h4>', unsafe_allow_html = True)
     row5.markdown('''
         <p align="justify">
-        Ketika mengimplementasikan Algoritma <i>Flower Pollination</i>, perlu menentukan terlebih dahulu
-        beberapa parameter untuk mengontrol perilaku algoritma tersebut. Masukan beberapa
-        parameter utama yang digunakan dalam FPA dengan benar.<br>
+        Berikut ini adalah solusi terbaik yang diperoleh dari hasil running program dengan data yang dipilih dan
+        menggunakan parameter yang telah diinput. Anda dapat mengklik kembali tombol <b>Jalankan Program</b> diatas
+        untuk mendapatkan hasil lain dengan nilai yang mungkin berbeda<br>
         </p>
         ''', unsafe_allow_html = True
     )   
